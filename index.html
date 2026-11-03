@@ -26,7 +26,6 @@
 
   <!-- Filter Section -->
   <section class="bg-slate-800 p-4 rounded-xl border border-slate-700 mb-6 flex flex-wrap gap-6 items-center">
-    <!-- Filter Lokasi -->
     <div class="flex items-center gap-2">
       <i class="fa-solid fa-map-location-dot text-blue-400"></i>
       <span class="font-semibold text-sm">Lokasi (Kota):</span>
@@ -35,7 +34,6 @@
       </select>
     </div>
 
-    <!-- Filter Aplikasi Out -->
     <div class="flex items-center gap-2">
       <i class="fa-solid fa-calendar-days text-emerald-400"></i>
       <span class="font-semibold text-sm">Aplikasi Out:</span>
@@ -63,80 +61,55 @@
   </section>
 
   <!-- Summary Cards Section -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
     
-    <!-- Kartu Utama Tracking Debitur -->
-    <div class="md:col-span-2 bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
-      <div class="flex justify-between items-start mb-3">
+    <!-- Total Debitur Card -->
+    <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col justify-between">
+      <div class="flex justify-between items-start">
         <div>
-          <div class="flex items-center gap-2">
-            <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">TRACKING DEBITUR</p>
-            <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-semibold px-2 py-0.5 rounded">All Data</span>
-          </div>
+          <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">TRACKING DEBITUR</p>
           <h3 id="statTotalDebitur" class="text-3xl font-extrabold text-blue-400 mt-1">0</h3>
         </div>
         <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center border border-blue-500/20 text-blue-400">
           <i class="fa-solid fa-users-rectangle text-xl"></i>
         </div>
       </div>
-      
-      <!-- Sub-Box Status Interaktif (Survey & Non Survey) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 pt-3 border-t border-slate-700/80">
-        
-        <!-- HEADER 1: SURVEY (Decision Final: Approve) -->
-        <div class="bg-slate-900/50 p-3 rounded-lg border border-blue-500/30">
-          <div class="flex justify-between items-center mb-2 pb-1 border-b border-slate-700/60">
-            <div class="flex items-center gap-1.5">
-              <span class="text-xs font-bold text-blue-300 uppercase flex items-center gap-1">
-                <i class="fa-solid fa-clipboard-check text-blue-400"></i> SURVEY
-              </span>
-              <span class="text-[10px] text-slate-400 font-normal">(Decision Final: Approve)</span>
-            </div>
-            <span id="statSurveyTotal" class="text-xs font-extrabold bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded">0</span>
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <!-- Completed Survey -->
-            <div onclick="showCategoryBreakdown('SurveyCompleted')" class="bg-slate-800 p-2 rounded border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-500/10 cursor-pointer transition">
-              <div class="flex items-center justify-between">
-                <p class="text-[10px] text-slate-400 font-medium">Completed</p>
-                <i class="fa-solid fa-circle-check text-emerald-400 text-[10px]"></i>
-              </div>
-              <p id="statSurveyDone" class="text-base font-bold text-emerald-400 mt-0.5">0</p>
-            </div>
-            <!-- Pending Survey -->
-            <div onclick="showCategoryBreakdown('SurveyPending')" class="bg-slate-800 p-2 rounded border border-red-500/30 hover:border-red-500/80 hover:bg-red-500/10 cursor-pointer transition">
-              <div class="flex items-center justify-between">
-                <p class="text-[10px] text-slate-400 font-medium">Pending</p>
-                <i class="fa-solid fa-clock-rotate-left text-red-400 text-[10px]"></i>
-              </div>
-              <p id="statSurveyPending" class="text-base font-bold text-red-400 mt-0.5">0</p>
-            </div>
-          </div>
-        </div>
+      <div class="mt-4 pt-3 border-t border-slate-700/80 text-[11px] text-slate-400">
+        Total seluruh aplikasi
+      </div>
+    </div>
 
-        <!-- HEADER 2: NON SURVEY (Decision Final: Approve) -->
-        <div class="bg-slate-900/50 p-3 rounded-lg border border-amber-500/30 flex flex-col justify-between">
-          <div class="flex justify-between items-center mb-2 pb-1 border-b border-slate-700/60">
-            <div class="flex items-center gap-1.5">
-              <span class="text-xs font-bold text-amber-300 uppercase flex items-center gap-1">
-                <i class="fa-solid fa-user-slash text-amber-400"></i> NON SURVEY
-              </span>
-              <span class="text-[10px] text-slate-400 font-normal">(Decision Final: Approve)</span>
-            </div>
-            <span id="statNonSurveyTotal" class="text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">0</span>
-          </div>
-          <div>
-            <!-- Completed Non Survey Only -->
-            <div onclick="showCategoryBreakdown('NonSurveyCompleted')" class="bg-slate-800 p-2.5 rounded border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-500/10 cursor-pointer transition">
-              <div class="flex items-center justify-between">
-                <p class="text-[10px] text-slate-400 font-medium">Completed</p>
-                <i class="fa-solid fa-circle-check text-emerald-400 text-[10px]"></i>
-              </div>
-              <p id="statNonSurveyDone" class="text-base font-bold text-emerald-400 mt-0.5">0</p>
-            </div>
-          </div>
+    <!-- KARTU 1: DECISION CREDIT APPROVAL (KOLOM AP) -->
+    <div onclick="showCategoryBreakdown('CreditApproval')" class="bg-slate-800 p-5 rounded-xl border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-500/10 cursor-pointer transition flex flex-col justify-between">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="text-xs text-emerald-400 uppercase font-bold tracking-wider">DECISION CREDIT APPROVAL</p>
+          <h3 id="statCreditApproval" class="text-3xl font-extrabold text-emerald-400 mt-1">0</h3>
         </div>
+        <div class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center border border-emerald-500/20 text-emerald-400">
+          <i class="fa-solid fa-file-circle-check text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4 pt-3 border-t border-slate-700/80 text-[11px] text-emerald-300 font-medium flex justify-between items-center">
+        <span>Klik untuk breakdown data</span>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      </div>
+    </div>
 
+    <!-- KARTU 2: DECISION FINAL (KOLOM AQ) -->
+    <div onclick="showCategoryBreakdown('DecisionFinal')" class="bg-slate-800 p-5 rounded-xl border border-blue-500/30 hover:border-blue-500/80 hover:bg-blue-500/10 cursor-pointer transition flex flex-col justify-between">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="text-xs text-blue-400 uppercase font-bold tracking-wider">DECISION FINAL (APPROVE)</p>
+          <h3 id="statDecisionFinal" class="text-3xl font-extrabold text-blue-400 mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center border border-blue-500/20 text-blue-400">
+          <i class="fa-solid fa-square-check text-xl"></i>
+        </div>
+      </div>
+      <div class="mt-4 pt-3 border-t border-slate-700/80 text-[11px] text-blue-300 font-medium flex justify-between items-center">
+        <span>Klik untuk breakdown data</span>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
       </div>
     </div>
 
@@ -151,16 +124,61 @@
           <i class="fa-solid fa-list-check text-xl"></i>
         </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-700/80 text-xs text-slate-400">
-        Antrean aktif dari tab Data Request yang sedang diproses.
+      <div class="mt-4 pt-3 border-t border-slate-700/80 text-[11px] text-slate-400">
+        Antrean aktif tab Data Request
       </div>
     </div>
 
   </div>
 
+  <!-- Status Survey & Non Survey Section -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Status Survey -->
+    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+      <div class="flex justify-between items-center mb-3 pb-2 border-b border-slate-700">
+        <span class="text-sm font-bold text-blue-400 flex items-center gap-2">
+          <i class="fa-solid fa-clipboard-check"></i> STATUS SURVEY (Wajib Survey)
+        </span>
+        <span id="statSurveyTotal" class="text-xs font-extrabold bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded">0</span>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div onclick="showCategoryBreakdown('SurveyCompleted')" class="bg-slate-900/60 p-3 rounded-lg border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-500/10 cursor-pointer transition">
+          <div class="flex items-center justify-between">
+            <p class="text-xs text-slate-400 font-medium">Completed (Tgl & Dec Valid)</p>
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+          </div>
+          <p id="statSurveyDone" class="text-xl font-bold text-emerald-400 mt-1">0</p>
+        </div>
+        <div onclick="showCategoryBreakdown('SurveyPending')" class="bg-slate-900/60 p-3 rounded-lg border border-red-500/30 hover:border-red-500/80 hover:bg-red-500/10 cursor-pointer transition">
+          <div class="flex items-center justify-between">
+            <p class="text-xs text-slate-400 font-medium">Pending Survey</p>
+            <i class="fa-solid fa-clock-rotate-left text-red-400"></i>
+          </div>
+          <p id="statSurveyPending" class="text-xl font-bold text-red-400 mt-1">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Non Survey -->
+    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between">
+      <div class="flex justify-between items-center mb-3 pb-2 border-b border-slate-700">
+        <span class="text-sm font-bold text-amber-400 flex items-center gap-2">
+          <i class="fa-solid fa-user-slash"></i> STATUS NON SURVEY
+        </span>
+        <span id="statNonSurveyTotal" class="text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded">0</span>
+      </div>
+      <div onclick="showCategoryBreakdown('NonSurveyCompleted')" class="bg-slate-900/60 p-3 rounded-lg border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-500/10 cursor-pointer transition">
+        <div class="flex items-center justify-between">
+          <p class="text-xs text-slate-400 font-medium">Completed Non Survey</p>
+          <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        </div>
+        <p id="statNonSurveyDone" class="text-xl font-bold text-emerald-400 mt-1">0</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Main Grid Section -->
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
     <!-- Request Survey Debitur (5 Data Terlama) -->
     <div class="lg:col-span-2 bg-slate-800 p-6 rounded-xl border border-slate-700">
       <div class="flex justify-between items-center mb-4">
@@ -201,7 +219,6 @@
         </ul>
       </div>
     </div>
-
   </div>
 
   <!-- Tracking Debitur Section -->
@@ -211,7 +228,6 @@
         <i class="fa-solid fa-chart-line"></i>Tracking Debitur
       </h2>
       
-      <!-- Input Search Interaktif -->
       <div class="flex items-center gap-2 w-full sm:w-auto">
         <div class="relative w-full sm:w-64">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
@@ -258,7 +274,6 @@
         </button>
       </div>
 
-      <!-- Ringkasan Angka Card -->
       <div id="decisionSummaryCards" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <!-- Render via JS -->
       </div>
@@ -391,7 +406,6 @@
     function loadAndProcessData() {
       document.getElementById('lastUpdate').innerText = "Memuat data...";
 
-      // Query Tab 1: Data Request
       const q1 = new google.visualization.Query(`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Data%20Request&range=A1:CB5000`);
       q1.send(res1 => {
         if (!res1.isError()) {
@@ -401,7 +415,6 @@
         }
       });
 
-      // Query Tab 2: Tracking Aplikasi
       const q2 = new google.visualization.Query(`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=Tracking%20Aplikasi&range=A1:CB5000`);
       q2.send(res2 => {
         if (!res2.isError()) {
@@ -423,22 +436,14 @@
         if (!customerName || customerName.toString().trim() === '' || customerName.toLowerCase() === 'nama customer') continue;
 
         const rawInputDate = dataTable.getFormattedValue(i, 0) || dataTable.getValue(i, 0) || '';
-        
-        // Kolom L (Index 11): Request Tanggal
         const rawReqDate = dataTable.getFormattedValue(i, 11) || dataTable.getValue(i, 11) || '';
         const formattedReqDate = formatDate(rawReqDate) || rawReqDate;
 
-        // Kolom N (Index 13): Tanggal Survey (Field)
         const rawSurveyDate = dataTable.getFormattedValue(i, 13) || dataTable.getValue(i, 13) || '';
         const formattedSurveyDate = formatDate(rawSurveyDate) || rawSurveyDate;
 
-        // Kolom O (Index 14): Time Process
         let timeProc = (dataTable.getFormattedValue(i, 14) || dataTable.getValue(i, 14) || '-').toString().trim();
-
-        // Kolom P (Index 15): Status Survey
         let statusSurveyVal = (dataTable.getFormattedValue(i, 15) || dataTable.getValue(i, 15) || 'On Process').toString().trim();
-
-        // Kolom Q (Index 16): Progres Survey
         let progresSurveyVal = (dataTable.getFormattedValue(i, 16) || dataTable.getValue(i, 16) || '-').toString().trim();
 
         let tglSurveyProj = 'Pending';
@@ -493,12 +498,18 @@
           crmNoVal = dataTable.getFormattedValue(i, 4) || dataTable.getValue(i, 4) || '-';
         }
 
-        // BACA KOLOM G (INDEX 6): PRODUCT (PP)
         let productVal = '-';
         if (6 < numCols) {
           productVal = dataTable.getFormattedValue(i, 6) || dataTable.getValue(i, 6) || '-';
         }
 
+        // BACA KOLOM AP (INDEX 41): DECISION CREDIT APPROVAL
+        let decisionCreditApprVal = '-';
+        if (41 < numCols) {
+          decisionCreditApprVal = dataTable.getFormattedValue(i, 41) || dataTable.getValue(i, 41) || '-';
+        }
+
+        // BACA KOLOM AQ (INDEX 42): DECISION FINAL
         let decisionFinalVal = '-';
         if (42 < numCols) {
           decisionFinalVal = dataTable.getFormattedValue(i, 42) || dataTable.getValue(i, 42) || '-';
@@ -542,28 +553,25 @@
           keteranganSurveyVal = dataTable.getFormattedValue(i, 25) || dataTable.getValue(i, 25) || '';
         }
 
-        // PERIKSA KOLOM W (INDEX 22) DAN KOLOM AA (INDEX 26) UNTUK NON SURVEY
         let keteranganW = (22 < numCols) ? (dataTable.getFormattedValue(i, 22) || dataTable.getValue(i, 22) || '') : '';
         let statusAA = (26 < numCols) ? (dataTable.getFormattedValue(i, 26) || dataTable.getValue(i, 26) || '') : '';
 
         let formattedSurveyDate = formatDate(tglProjectVal) || formatDate(tglKantorVal);
 
-        // PENGECEKAN PERSYARATAN TERISI TANGGAL (KOLOM X, Y, ATAU Z)
-        let hasSurveyData = false;
-        let displayKeteranganSurvey = 'Pending';
-
-        if (keteranganSurveyVal && keteranganSurveyVal.toString().trim() !== '' && keteranganSurveyVal.toString().trim() !== '-') {
-          displayKeteranganSurvey = keteranganSurveyVal.toString().trim();
-          hasSurveyData = true;
-        } else if (tglProjectVal && tglProjectVal.toString().trim() !== '' && tglProjectVal.toString().trim() !== '-') {
-          displayKeteranganSurvey = formattedSurveyDate || tglProjectVal.toString().trim();
-          hasSurveyData = true;
-        } else if (tglKantorVal && tglKantorVal.toString().trim() !== '' && tglKantorVal.toString().trim() !== '-') {
-          displayKeteranganSurvey = formattedSurveyDate || tglKantorVal.toString().trim();
-          hasSurveyData = true;
+        // PENGECEKAN PERSYARATAN TERISI TANGGAL SURVEY (KOLOM X ATAU Y)
+        let hasSurveyDate = false;
+        if ((tglProjectVal && tglProjectVal.toString().trim() !== '' && tglProjectVal.toString().trim() !== '-') ||
+            (tglKantorVal && tglKantorVal.toString().trim() !== '' && tglKantorVal.toString().trim() !== '-')) {
+          hasSurveyDate = true;
         }
 
-        // PERIKSA APABILA TERMASUK CATEGORY NON SURVEY
+        let displayKeteranganSurvey = 'Pending';
+        if (keteranganSurveyVal && keteranganSurveyVal.toString().trim() !== '' && keteranganSurveyVal.toString().trim() !== '-') {
+          displayKeteranganSurvey = keteranganSurveyVal.toString().trim();
+        } else if (hasSurveyDate) {
+          displayKeteranganSurvey = formattedSurveyDate || tglProjectVal.toString().trim() || tglKantorVal.toString().trim();
+        }
+
         let isNonSurvey = keteranganW.toLowerCase().includes('non survey') || statusAA.toLowerCase().includes('non survey');
 
         let lokasiProjectVal = '';
@@ -617,22 +625,20 @@
 
         const item = {
           no: noVal,
-          inputDate: noVal,
           debitur: debiturName,
           noCRM: crmNoVal,
           product: productVal,
           marketing: (7 < numCols) ? (dataTable.getValue(i, 7) || '-') : '-',
           isNonSurvey: isNonSurvey,
-          hasSurveyData: hasSurveyData,
+          hasSurveyDate: hasSurveyDate,
           keteranganSurvey: displayKeteranganSurvey,
           statusSurvey: statusAA || (isNonSurvey ? 'Non Survey' : 'Wajib Survey'),
-          tglSurveyProject: formattedSurveyDate || (hasSurveyData ? tglProjectVal : '-'),
+          tglSurveyProject: formattedSurveyDate || (hasSurveyDate ? tglProjectVal : '-'),
           timeProcess: timeProcessVal,
+          decisionCreditAppr: decisionCreditApprVal,
           decisionFinal: decisionFinalVal,
           docLink: docLinkVal,
           lokasiProject: lokasiProjectVal,
-          kota: lokasiProjectVal,
-          provinsi: lokasiProjectVal,
           aplikasiOut: displayAplikasiOut || '-',
           rawAplikasiOut: fullCombo,
           parsedYear: parsedYear,
@@ -676,7 +682,7 @@
 
       filterTahunSelect.innerHTML = '<option value="">Tahun</option>';
       Array.from(years).sort().reverse().forEach(yr => {
-        filterTahunSelect.innerHTML += `<option value="${yr}">${yr}">${yr}</option>`;
+        filterTahunSelect.innerHTML += `<option value="${yr}">${yr}</option>`;
       });
 
       if (currentYearVal && years.has(currentYearVal)) {
@@ -726,53 +732,63 @@
           i.statusSurvey.toLowerCase().includes(searchQuery) ||
           i.tglSurveyProject.toLowerCase().includes(searchQuery) ||
           i.timeProcess.toLowerCase().includes(searchQuery) ||
+          i.decisionCreditAppr.toLowerCase().includes(searchQuery) ||
           i.decisionFinal.toLowerCase().includes(searchQuery)
         );
       }
 
-      let surveyDone = 0;
-      let surveyPendingApproveOnly = 0;
-      let nonSurveyTotalApprove = 0;
+      let countCreditApprApprove = 0;
+      let countFinalApprove = 0;
+
+      let surveyTotalWajib = 0;
+      let surveyDoneCompleted = 0;
+      let surveyPendingCount = 0;
+
+      let nonSurveyTotal = 0;
       let nonSurveyDone = 0;
 
       currentFilteredTracking.forEach(t => {
-        const decLower = (t.decisionFinal || '').toLowerCase();
-        
+        const decCreditLower = (t.decisionCreditAppr || '').toLowerCase();
+        const decFinalLower = (t.decisionFinal || '').toLowerCase();
+
+        if (decCreditLower.includes('approve')) countCreditApprApprove++;
+        if (decFinalLower.includes('approve')) countFinalApprove++;
+
+        // LOGIKA BARU KATEGORI SURVEY & NON SURVEY
+        const isDecValid = decFinalLower.includes('approve') || decFinalLower.includes('reject');
+
         if (!t.isNonSurvey) {
-          // Kategori Survey (Hanya yang Approve)
-          if (decLower.includes('approve')) {
-            if (t.hasSurveyData) {
-              surveyDone++;
-            } else {
-              surveyPendingApproveOnly++;
-            }
+          surveyTotalWajib++;
+          // Completed jika TERISI TANGGAL SURVEY (Kantor/Project) AND DECISION FINAL IS APPROVE / REJECT
+          if (t.hasSurveyDate && isDecValid) {
+            surveyDoneCompleted++;
+          } else {
+            surveyPendingCount++;
           }
         } else {
-          // Kategori Non Survey (Hanya yang Approve)
-          if (decLower.includes('approve')) {
-            nonSurveyTotalApprove++;
-            // Hanya terhitung Completed jika KOLOM X / Y / Z terisi tanggal/keterangan
-            if (t.hasSurveyData) {
-              nonSurveyDone++;
-            }
+          nonSurveyTotal++;
+          if (t.hasSurveyDate && isDecValid) {
+            nonSurveyDone++;
           }
         }
       });
 
       document.getElementById('statTotalDebitur').innerText = currentFilteredTracking.length;
-      
+      document.getElementById('statCreditApproval').innerText = countCreditApprApprove;
+      document.getElementById('statDecisionFinal').innerText = countFinalApprove;
+
       // Card Header Survey
-      document.getElementById('statSurveyTotal').innerText = surveyDone + surveyPendingApproveOnly;
-      document.getElementById('statSurveyDone').innerText = surveyDone;
-      document.getElementById('statSurveyPending').innerText = surveyPendingApproveOnly;
+      document.getElementById('statSurveyTotal').innerText = surveyTotalWajib;
+      document.getElementById('statSurveyDone').innerText = surveyDoneCompleted;
+      document.getElementById('statSurveyPending').innerText = surveyPendingCount;
 
       // Card Header Non Survey
-      document.getElementById('statNonSurveyTotal').innerText = nonSurveyTotalApprove;
+      document.getElementById('statNonSurveyTotal').innerText = nonSurveyTotal;
       document.getElementById('statNonSurveyDone').innerText = nonSurveyDone;
 
       document.getElementById('statActiveTotal').innerText = filteredActive.length;
 
-      // 1. Request Survey Debitur (5 Data Inputan Terlama)
+      // 1. Request Survey Debitur Table
       const oldestActive5 = [...filteredActive]
         .sort((a, b) => {
           if (isNaN(a.rawInputDateObj) || isNaN(b.rawInputDateObj)) return 0;
@@ -804,7 +820,7 @@
         `).join('');
       }
 
-      // 2. History Data Customer Request Survey Debitur (Menampilkan Perbandingan Request Date & Survey Field Date)
+      // 2. History Data Customer Request
       const completedHistoryList = globalAllHistoryRequests.filter(item => {
         const st = item.statusSurvey.toLowerCase();
         return st === 'done' || st === 'completed';
@@ -825,7 +841,6 @@
               </div>
               ${getStatusBadge(item.statusSurvey)}
             </div>
-            <!-- Rincian Tanggal Request vs Tanggal Survey Field -->
             <div class="grid grid-cols-2 gap-2 bg-slate-800/80 p-2 rounded border border-slate-700 text-[10px] mt-0.5">
               <div>
                 <span class="text-slate-400 block font-medium">Req. Tanggal:</span>
@@ -868,24 +883,30 @@
       let items = [];
       let titleText = "";
 
-      if (categoryType === 'SurveyCompleted') {
+      if (categoryType === 'CreditApproval') {
+        items = currentFilteredTracking.filter(i => (i.decisionCreditAppr || '').toLowerCase().includes('approve'));
+        titleText = "Decision Credit Approval (Approve)";
+      } else if (categoryType === 'DecisionFinal') {
+        items = currentFilteredTracking.filter(i => (i.decisionFinal || '').toLowerCase().includes('approve'));
+        titleText = "Decision Final (Approve)";
+      } else if (categoryType === 'SurveyCompleted') {
         items = currentFilteredTracking.filter(i => {
           const dec = (i.decisionFinal || '').toLowerCase();
-          return !i.isNonSurvey && i.hasSurveyData && dec.includes('approve');
+          return !i.isNonSurvey && i.hasSurveyDate && (dec.includes('approve') || dec.includes('reject'));
         });
-        titleText = "Survey - Completed";
+        titleText = "Survey Completed (Terisi Tgl & Decision Approve/Reject)";
       } else if (categoryType === 'SurveyPending') {
         items = currentFilteredTracking.filter(i => {
           const dec = (i.decisionFinal || '').toLowerCase();
-          return !i.isNonSurvey && !i.hasSurveyData && dec.includes('approve');
+          return !i.isNonSurvey && (!i.hasSurveyDate || (!dec.includes('approve') && !dec.includes('reject')));
         });
-        titleText = "Survey - Pending";
+        titleText = "Survey Pending";
       } else if (categoryType === 'NonSurveyCompleted') {
         items = currentFilteredTracking.filter(i => {
           const dec = (i.decisionFinal || '').toLowerCase();
-          return i.isNonSurvey && i.hasSurveyData && dec.includes('approve');
+          return i.isNonSurvey && i.hasSurveyDate && (dec.includes('approve') || dec.includes('reject'));
         });
-        titleText = "Non Survey - Completed";
+        titleText = "Non Survey Completed";
       }
 
       let countApprove = 0;
