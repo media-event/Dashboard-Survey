@@ -398,7 +398,20 @@
       if (!docUrl || docUrl.trim() === '' || docUrl === '-') {
         return `<span class="text-slate-500 font-medium">-</span>`;
       }
-      return `<a href="${docUrl.trim()}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 px-2.5 py-1 rounded text-[11px] font-semibold transition">
+
+      const rawUrl = docUrl.trim();
+
+      // Cek apakah link yang tertempel di sheet berupa link FOLDER
+      if (rawUrl.includes('/folders/')) {
+        return `<a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 px-2.5 py-1 rounded text-[11px] font-semibold transition" title="Link mengarah ke Folder">
+          <i class="fa-solid fa-folder-open"></i> Open Folder
+        </a>`;
+      }
+
+      // Ubah akhiran /view menjadi /preview agar file PDF terbuka langsung dalam mode baca penuh
+      const directPdfUrl = rawUrl.replace(/\/view(\?.*)?$/, '/preview');
+
+      return `<a href="${directPdfUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 px-2.5 py-1 rounded text-[11px] font-semibold transition">
         <i class="fa-solid fa-file-pdf"></i> View PDF
       </a>`;
     }
